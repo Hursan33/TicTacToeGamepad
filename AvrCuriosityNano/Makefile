@@ -27,7 +27,7 @@ LDFLAGS := -O2 -mmcu=atmega4809 -Wl,--gc-sections
 .PHONY: all clean flash
 
 # Default target
-all: clean $(OUTPUT_HEX) flash
+all: $(OUTPUT_HEX) flash
 
 # Ensure build directory exists
 $(dir_build):
