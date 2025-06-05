@@ -1,5 +1,7 @@
 # TicTacToeGamepad
 
+## TBD - Test new version of code, assemble the integrated arduino version, upload edited case
+
 ## 1 Introduction
 This project is an implementation of a Tic Tac Toe game using both hardware and software. The
 purpose of the project is to practice working with an 8-bit mcu on register level.
