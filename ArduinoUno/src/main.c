@@ -43,7 +43,7 @@ int main(void) {
 
         if (GAME_MODE) {
             if (*move_count == 3) {
-                set_color(&s, get_dim(color, DIM_DIV), moves[0][1], moves[0][0]);
+                set_color(&s, get_dim(color, DIM_DIV), moves[0][0], moves[0][1]);
                 flush_strip(s, 9);
             }
         }
@@ -84,7 +84,7 @@ int main(void) {
                 banned_c = moves[0][1];
                 banned_r = moves[0][0];
 
-                set_color(&s, get_dim(color, DIM_DIV), moves[0][1], moves[0][0]);
+                set_color(&s, get_dim(color, DIM_DIV), moves[0][0], moves[0][1]);
                 flush_strip(s, 9);
                 _delay_ms(1000);
             }
