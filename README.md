@@ -76,6 +76,8 @@ The entire KiCad project can be found in the REPO
 ![image](https://github.com/user-attachments/assets/093761e4-1026-42ff-8dac-c76c713c707c)
 ![image](https://github.com/user-attachments/assets/21b14925-c09e-4a63-81e3-8c0233fa0579)
 The pins are only used for the CuriosityNano, you can read more [here](https://github.com/Hursan33/TicTacToeGamepad/tree/main/AvrCuriosityNano)
+## PINOUT
+ ![20250605_113647](https://github.com/user-attachments/assets/8168c5ad-e2a1-4dab-aa40-1cf3175d9f8d)
 
 
 
