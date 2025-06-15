@@ -60,12 +60,12 @@ set. The colors of each player and draw are also customizable, using RGB format.
 moving mark is also possible to change.
 To change these settings these macros can be modified in the “config.h” file:
 
-* GAME_MODE –1 (3-mark rule) or 0 (Classic).  
-* BOT –1 (Bot is turned on) or 0 (Bot is off).  
-* PLAYER_N_COLOR and DRAW_COLOR –has this syntax (Color) R, G, B, you replace the R, G, B
+* GAME_MODE – 1 (3-mark rule) or 0 (Classic).  
+* BOT – 1 (Bot is turned on) or 0 (Bot is off).  
+* PLAYER_N_COLOR and DRAW_COLOR – has this syntax (Color) R, G, B, you replace the R, G, B
 with the corresponding colors of the value. Player colors and draw color all have to be different
 otherwise an error occurs.  
-* DIM_DIV –the amount by which the values of the color are divided, e.g. DIM_DIV 16 makes the
+* DIM_DIV – the amount by which the values of the color are divided, e.g. DIM_DIV 16 makes the
 LEDs be 1
 16 of their brightness.  
 
