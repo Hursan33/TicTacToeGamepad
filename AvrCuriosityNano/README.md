@@ -3,7 +3,7 @@ This version of the software is written in C, compiled using avrgcc and flashed 
 the LEDs, which are sensitive to timing, so I decided to use `nop` instructions. They are used to create delay, which is more accurate than using delay functions from
 `<util/delay.h>`. For the number of cycles, I used the LED datasheet as a reference. 
 ## Status
-This version of the project was an assignment on a school cours and will *NOT* be updated anymore.
+This version of the project was an assignment on a school course and will *NOT* be updated anymore.
 ## Connection
 In this version the MCU was connected via the 9 pins present on the PCB, 
 but it can be made completely stand-alone.
