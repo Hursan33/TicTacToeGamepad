@@ -14,3 +14,6 @@ This variant of the projects uses additional components.
 2 of the 3 switches are connected to pins A0 and A2, the position of these switches at startup controls whether the Bot or 3-mark rule functionalities are turned on, thus there is no need to edit the code. The last switch is the power switch and completes the circuit between the MCU and the charging circuit. I repurposed an old micro usb connecter between the MCU and charging circuit but you can hardwire it.
 The pin connections can be found in the code [here](https://github.com/Hursan33/TicTacToeGamepad/blob/main/Standalone%20(Pro%20Micro)/firmware.ino).
 
+![a4](https://github.com/user-attachments/assets/833b19bb-f365-4123-aa58-1469e7e8e6a4)
+![a5](https://github.com/user-attachments/assets/dd2a5ca7-094d-4229-ac7f-8f4d768e4f0d)
+![a6](https://github.com/user-attachments/assets/5fda11cd-0daf-4f1e-9c2a-9311c9b83f9f)
