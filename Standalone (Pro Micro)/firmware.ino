@@ -147,28 +147,40 @@ void loop() {
 
 bool prev_states[3][3] = {{true}};
 
-bool gameEnded(uint8_t board[3][3], int currPlayer) {
+bool gameEnded(uint8_t board[3][3], int currPlayer, bool botCheck) {
     for (int i = 0; i < 3; i++) {
         if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] == currPlayer){
-            Serial.println("End by ROW");
+            int winners[3][2] = {{i, 0}, {i, 1}, {i, 2}};
+            if (!botCheck) {
+              blinkWinner(winners, currPlayer == 1 ? PLAYER_1_COLOR : PLAYER_2_COLOR);
+            }
             return true;
         }
     }
     
     for (int i = 0; i < 3; i++) {
         if (board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[0][i] == currPlayer){
-            Serial.println("End by COL");
+            int winners[3][2] = {{0, i}, {1, i}, {2, i}};
+            if (!botCheck) {
+              blinkWinner(winners, currPlayer == 1 ? PLAYER_1_COLOR : PLAYER_2_COLOR);
+            }
             return true;
         }
     }
     
     if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] == currPlayer) {
-        Serial.println("End by DIAG");
+        int winners[3][2] = {{0, 0}, {1, 1}, {2, 2}};
+        if (!botCheck) {
+          blinkWinner(winners, currPlayer == 1 ? PLAYER_1_COLOR : PLAYER_2_COLOR);
+        }
         return true;
     }
     
     if (board[2][0] == board[1][1] && board[1][1] == board[0][2] && board[2][0] == currPlayer) {
-        Serial.println("End by SEC_DIAG");
+        int winners[3][2] = {{2, 0}, {1, 1}, {0, 2}};
+        if (!botCheck) {
+          blinkWinner(winners, currPlayer == 1 ? PLAYER_1_COLOR : PLAYER_2_COLOR);
+        }
         return true;
     }
     
@@ -264,7 +276,7 @@ void bot_move(uint8_t board[3][3], int *row, int *col, int b_r, int b_c, int mov
             if (is_empty(board, i, j)) {
 
                 board[i][j] = 2;
-                if (gameEnded(board, 2)) {
+                if (gameEnded(board, 2, true)) {
                     //ZAPISE A VYHRA
                     *col = j;
                     *row = i;
@@ -286,7 +298,7 @@ void bot_move(uint8_t board[3][3], int *row, int *col, int b_r, int b_c, int mov
                 if (moves_count == 3) {
                     board[move[0]][move[1]] = 0;
                 }
-                if (gameEnded(board, 1)) {
+                if (gameEnded(board, 1, true)) {
                     //ZAPISE A BLOKUJE
                     board[i][j] = 2;
                     *col = j;
@@ -348,7 +360,7 @@ void bot_move(uint8_t board[3][3], int *row, int *col, int b_r, int b_c, int mov
 
 void check_end(uint8_t board[3][3], int player, uint8_t *p1_count, 
     uint8_t *p2_count, uint8_t *banned_c, uint8_t *banned_r) {
-    bool game_ended = gameEnded(board, player);
+    bool game_ended = gameEnded(board, player, false);
     if (game_ended || drawCheck(board)) {
         ending_animation(game_ended ? (player == 1 ? PLAYER_1_COLOR : PLAYER_2_COLOR) : DRAW_COLOR);
         
@@ -388,10 +400,30 @@ void ending_animation(uint8_t* rgb) {
         pixels.show();
     }
 
-    delay(5000);
+    delay(2500);
     pixels.clear();
     pixels.show();
 }
+
+void blinkWinner(int winners[3][2], uint8_t* rgb) {
+  for (int j = 0; j < 3; j++) { 
+    delay(ANIM_SPEED * 2);
+    for (int i = 0; i < 3; i++) {
+      int index = keypadToNeoPixelIndex[winners[i][0]][winners[i][1]];
+      Serial.print(winners[i][0]);
+      Serial.println(winners[i][1]);
+      pixels.setPixelColor(index, pixels.Color(0,0,0));
+    }
+    pixels.show();
+    delay(ANIM_SPEED * 2);
+    for (int i = 0; i < 3; i++) {
+      int index = keypadToNeoPixelIndex[winners[i][0]][winners[i][1]];
+      pixels.setPixelColor(index, pixels.Color(rgb[0],rgb[1],rgb[2]));
+    }
+    pixels.show();
+  }
+}
+
 //
 //bool check_color(Color color1, Color color2) {
 //    return color1.rgb[0] == color2.rgb[0] &&
